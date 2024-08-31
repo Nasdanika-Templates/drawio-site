@@ -1,0 +1,48 @@
+name: Generate HTML Site from a Drawio diagram with Nasdanika CLI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Download Nasdanika CLI
+        run: wget https://github.com/Nasdanika/cli/releases/download/maven-2024.8.0/nsd-cli-2024.8.0.zip
+      - name: Unzip Nasdanika CLI
+        run: unzip nsd-cli-2024.8.0.zip
+      - name: Generate site
+        working-directory: nsd-cli
+        run: |
+          chmod u+x nsd
+          ./nsd drawio ../diagram.drawio html-app -r ../root-action.yml --add-to-root site -r=-1 -F ../page-template.yml ../docs
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: 'docs'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

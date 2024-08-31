@@ -1,0 +1,25 @@
+Action:
+    icon: https://docs.nasdanika.org/images/nasdanika-logo.png
+    text: Nasdanika Demos
+    # location: https://github.com/Nasdanika-Demos - breaks the site in 2024.8.0, will be fixed in subsequent releases
+    children:
+      - Action:
+          location: ${base-uri}search.html
+          icon: fas fa-search
+          text: Search
+          content:
+            Interpolator:
+              source:
+                exec.content.Resource: classpath://org/nasdanika/html/model/app/gen/search.html
+      - Action:
+          location: ${base-uri}glossary.html
+          text: Glossary
+          content:
+            Interpolator:
+              source:
+                exec.content.Resource: classpath://org/nasdanika/html/model/app/gen/semantic-info.html
+    navigation:
+      - Action:
+          text: Source
+          icon: fab fa-github
+          location: https://github.com/Nasdanika-Demos/aws-diagram-doc  
