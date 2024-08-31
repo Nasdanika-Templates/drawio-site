@@ -38,7 +38,7 @@ jobs:
         run: |
           chmod u+x nsd
           ./nsd drawio ../diagram.drawio html-app -r ../root-action.yml --add-to-root site -r=-1 -F ../page-template.yml ../docs
-		  ls ../docs
+          ls ../docs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
