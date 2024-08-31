@@ -44,7 +44,9 @@ Below is a list of sites created from this template:
 	public static final String TITLE_PROPERTY = "title";
 	public static final String ICON_PROPERTY = "icon";
 
+## Page and element links
 
+## Multiple diagram pages
 
 
 ## Markdown 
