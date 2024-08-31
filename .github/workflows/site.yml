@@ -38,6 +38,7 @@ jobs:
         run: |
           chmod u+x nsd
           ./nsd drawio ../diagram.drawio html-app -r ../root-action.yml --add-to-root site -r=-1 -F ../page-template.yml ../docs
+		  ls ../docs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -46,3 +47,11 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+# Uncomment to defaults:
+#      - name: Setup upterm session
+#        uses: lhotari/action-upterm@v1
+#        if: ${{ failure() }}
+#        with:
+#          ## If no one connects after 5 minutes, shut down server.
+#          wait-timeout-minutes: 5
