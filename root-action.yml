@@ -1,6 +1,6 @@
 Action:
     icon: https://docs.nasdanika.org/images/nasdanika-logo.png
-    text: Nasdanika Demos
+    text: Nasdanika Templates
     # location: https://github.com/Nasdanika-Demos - breaks the site in 2024.8.0, will be fixed in subsequent releases
     children:
       - Action:
@@ -22,4 +22,4 @@ Action:
       - Action:
           text: Source
           icon: fab fa-github
-          location: https://github.com/Nasdanika-Demos/aws-diagram-doc  
+          location: https://github.com/Nasdanika-Templates/drawio-site  
