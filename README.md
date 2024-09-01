@@ -9,11 +9,17 @@ Below is a list of sites created from this template:
 
 ...TODO...
 
+## Quick start video
+
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe src="https://www.youtube.com/embed/LNdGYB5fxgM?si=TASIJM5jGx6UYgq-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 ## Steps
 
 * On the [repository page](https://github.com/Nasdanika-Templates/drawio-site) click "Use this template" button in the top right.
 * Once you create a new repository, go to the Settings > Pages and select "GitHub Actions" as source.
-* Click on the Acitons tab and check the status of ``Generate HTML Site from a Drawio diagram with Nasdanika CLI`` action. Once it is successful, open the pages site.
+* Click on the Acitons tab. You should see a failed deployment. Manually trigger ``Generate HTML Site from a Drawio diagram with Nasdanika CLI`` action. Once it is successful, open the pages site.
 * Customize the diagram, root action, and page template to your needs as explained below.
 
 The deployment action can be triggered manually from the actions page. 
@@ -61,6 +67,8 @@ The root action defines:
 You can add documentation to diagram elements, ``title`` and ``icon`` property, customize element ID, and link elements to pages or other elements, including pages and elements in other diagram files.
 
 Site pages are generated only for elements with documentation.
+
+Important: Pages are not generated for diagram elements without labels or ``title`` property! It may lead to broken links.
 
 ### Documentation
 
@@ -424,7 +432,7 @@ If you want to prevent deployment of a site with page errors, remove the option 
 
 ## Upgrading NSD CLI version
 
-When a new version of Nasdanika CLI is released you may update lines 33 and 35 in ``site.xml`` to point to the new distribution.
+When a new version of Nasdanika CLI is released you may update lines 33 and 35 in ``site.yml`` to point to the new distribution.
 
 ## Adding support for a new documentation format
 
@@ -434,7 +442,7 @@ To add a new documentation format:
 * Create a documentation [capability](https://docs.nasdanika.org/core/capability/index.html) factory class, see [MarkdownDocumentationFactory](https://github.com/Nasdanika/core/blob/master/exec/src/main/java/org/nasdanika/exec/util/MarkdownDocumentationFactory.java)
 * Register it in ``module-info.java`` - [example](https://github.com/Nasdanika/core/blob/master/exec/src/main/java/module-info.java)
 * Build a custom CLI with the above module as a dependency. See [Demo CLI](https://github.com/Nasdanika-Demos/cli) for an example.
-* Build a distribution, deploy to a web location, and update ``site.xml`` lines 33 and 35.
+* Build a distribution, deploy to a web location, and update ``site.yml`` lines 33 and 35.
 
 ## Next steps
 
