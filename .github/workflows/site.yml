@@ -33,6 +33,8 @@ jobs:
         run: wget https://github.com/Nasdanika/cli/releases/download/maven-2024.8.0/nsd-cli-2024.8.0.zip
       - name: Unzip Nasdanika CLI
         run: unzip nsd-cli-2024.8.0.zip
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v2
       - name: Generate site
         working-directory: nsd-cli
         run: |
