@@ -7,13 +7,8 @@ This is a template repository for web sites generated from [Drawio](https://www.
 
 Below is a list of sites created from this template:
 
-...TODO...
-
-## Quick start video
-
-<div class="embed-responsive embed-responsive-16by9">
-  <iframe src="https://www.youtube.com/embed/LNdGYB5fxgM?si=TASIJM5jGx6UYgq-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+* [Bob the builder](https://nasdanika-demos.github.io/bob-the-builder/), this [video](https://www.youtube.com/watch?v=OtifPFetg9o) shows how this demo was created.
+* [Declarative Command Pipelines](https://nasdanika-demos.github.io/declarative-command-pipelines/)
 
 ## Steps
 
@@ -57,7 +52,7 @@ In the page template file you can:
 The root action defines:
 
 * The header (root action[^action_types]). You may modify the icon and the title. 
-* Root navigation actions - lines 6 - 20. Glossary and search are functional, but not perfect - they need TLC, which I don't have capacity for at the moment. You may use them AS-IS, remove/replace, or improve and create a pull request. 
+* Root navigation actions - lines 6 - 20. Glossary and search are functional, but not perfect - they need TLC, which I don't have capacity for at the moment. You may use them AS-IS, remove/replace, or improve and create a pull request. Their advantage is that they are standalone - no external dependencies. For public web sites you may consider something like [Algolia](https://www.algolia.com) - they have a [free tier](https://www.algolia.com/pricing/) and a [Vue.js](https://vuejs.org/) search component, [InstantSearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/vue/)
 * Footer (root navigation) at lines 21+. Out of the box is links to the template repository site - update or remove.
 
 [^action_types]: See [Action types](https://html-app.models.nasdanika.org/index.html#action-types)
@@ -450,7 +445,9 @@ This section outlines possible next steps once you have a site generated from a 
 
 ### Executable diagrams
 
-You may make the diagrams executable. TODO - links to demos
+You may make the diagrams executable. Details and demos are coming soon.
+
+#### Scripted processors
 
 #### Dynamic proxy
 
