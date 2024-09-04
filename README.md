@@ -28,7 +28,7 @@ For example:
 ## Deployment process
 
 * [Nasdanika CLI](https://docs.nasdanika.org/nsd-cli/index.html) is downloaded and extracted
-* ``[drawio](https://docs.nasdanika.org/nsd-cli/nsd/drawio/index.html) <diagram file> [html-app](https://docs.nasdanika.org/nsd-cli/nsd/drawio/html-app/index.html) ... [site](https://docs.nasdanika.org/nsd-cli/nsd/drawio/html-app/site/index.html) ...`` command pipeline is executed to generate a Web site
+* [drawio](https://docs.nasdanika.org/nsd-cli/nsd/drawio/index.html) <diagram file> [html-app](https://docs.nasdanika.org/nsd-cli/nsd/drawio/html-app/index.html) ... [site](https://docs.nasdanika.org/nsd-cli/nsd/drawio/html-app/site/index.html) ... command pipeline is executed to generate a Web site
 * The generated site is deployed to [GitHub Pages](https://pages.github.com/). 
 
 ## Diagram file
