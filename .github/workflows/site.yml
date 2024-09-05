@@ -50,7 +50,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Uncomment to defaults:
+# Uncomment to troubleshoot:
 #      - name: Setup upterm session
 #        uses: lhotari/action-upterm@v1
 #        if: ${{ failure() }}
