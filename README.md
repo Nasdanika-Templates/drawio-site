@@ -8,7 +8,8 @@ This is a template repository for web sites generated from [Drawio](https://www.
 Below is a list of sites created from this template:
 
 * [Bob the builder](https://nasdanika-demos.github.io/bob-the-builder/), this [video](https://www.youtube.com/watch?v=OtifPFetg9o) shows how this demo was created.
-* [Declarative Command Pipelines](https://nasdanika-demos.github.io/declarative-command-pipelines/)
+* [Internet Banking System](https://nasdanika-demos.github.io/internet-banking-system/index.html) - a sample C4 Model documented using this template/approach.
+* [Declarative Command Pipelines](https://nasdanika-demos.github.io/declarative-command-pipelines/) - illustrations for a Medium story.
 
 ## Steps
 
