@@ -9,7 +9,7 @@ Below is a list of sites created from this template:
 
 * [Bob the builder](https://nasdanika-demos.github.io/bob-the-builder/), this [video](https://www.youtube.com/watch?v=OtifPFetg9o) shows how this demo was created.
 * [Internet Banking System](https://nasdanika-demos.github.io/internet-banking-system/index.html) - a sample C4 Model documented using this template/approach.
-* [Declarative Command Pipelines](https://nasdanika-demos.github.io/declarative-command-pipelines/) - illustrations for a Medium story.
+* [Declarative Command Pipelines](https://nasdanika-demos.github.io/declarative-command-pipelines/) - illustrations for a Medium story. This demo show how to create a site from a diagram with multiple top-level pages.
 
 ## Steps
 
@@ -122,7 +122,18 @@ The link chain is traversed and the diagram element on the generated site is lin
 A top-level diagram page is a page that is not linked from any diagram element. 
 If there is more than one top-level page, then you may want to add a principal action to the ``root-action.yml`` and link pages to the principal action by removing ``--add-to-root`` option from the command line.
 
-See TODO for an example.
+See [Declarative Command Pipelines](https://nasdanika-demos.github.io/declarative-command-pipelines/) for an example.
+
+## Icons
+
+Drawio has more than two thousand built-in icons. You can find more icons on the below sites:
+
+* [Icons8](https://icons8.com/) - more than a million icons in 47 styles. Free and subscription. Icons can be edited in-place before downloading.
+* [IconFinder](https://www.iconfinder.com/) - the world's largest marketplace for icons, ... 6 million icons at your fingertips including free icons. Multiple subscription levels.
+* [Iconduck](https://iconduck.com/) - more than 250 000 free open source icons
+* Cloud providers:
+    * [Azure](https://learn.microsoft.com/en-us/azure/architecture/icons/)
+    * [AWS](https://aws.amazon.com/architecture/icons/)  
 
 ## Markdown 
 
