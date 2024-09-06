@@ -49,6 +49,8 @@ In the page template file you can:
 * Remove line 36 or set ``fluid`` to ``false``.
 * Modify [navigation panel style](https://html-app.models.nasdanika.org/references/eClassifiers/NavigationPanelStyle/index.html) at line 38
 
+See [Bootstrap Page Load Specification](https://bootstrap.models.nasdanika.org/references/eClassifiers/Page/load-specification.html) for supported confiuration keys.
+
 ## Root action
 
 The root action defines:
@@ -56,6 +58,8 @@ The root action defines:
 * The header (root action[^action_types]). You may modify the icon and the title. 
 * Root navigation actions - lines 6 - 20. Glossary and search are functional, but not perfect - they need TLC, which I don't have capacity for at the moment. You may use them AS-IS, remove/replace, or improve and create a pull request. Their advantage is that they are standalone - no external dependencies. For public web sites you may consider something like [Algolia](https://www.algolia.com) - they have a [free tier](https://www.algolia.com/pricing/) and a [Vue.js](https://vuejs.org/) search component, [InstantSearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/vue/)
 * Footer (root navigation) at lines 21+. Out of the box is links to the template repository site - update or remove.
+
+See [Action Load Specification](https://html-app.models.nasdanika.org/references/eClassifiers/Action/load-specification.html) for supported configuration keys. 
 
 [^action_types]: See [Action types](https://html-app.models.nasdanika.org/index.html#action-types)
 
