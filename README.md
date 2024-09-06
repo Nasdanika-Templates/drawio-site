@@ -128,8 +128,9 @@ See [Declarative Command Pipelines](https://nasdanika-demos.github.io/declarativ
 
 Drawio has more than two thousand built-in icons. You can find more icons on the below sites:
 
-* [Icons8](https://icons8.com/) - more than a million icons in 47 styles. Free and subscription. Icons can be edited in-place before downloading.
+* [FlatIcons](https://www.flaticon.com/pricing) - 16.8 million icons. Free with attribution, a paid plan is available - no attribution.
 * [IconFinder](https://www.iconfinder.com/) - the world's largest marketplace for icons, ... 6 million icons at your fingertips including free icons. Multiple subscription levels.
+* [Icons8](https://icons8.com/) - more than a million icons in 47 styles. Free and subscription. Icons can be edited in-place before downloading.
 * [Iconduck](https://iconduck.com/) - more than 250 000 free open source icons
 * Cloud providers:
     * [Azure](https://learn.microsoft.com/en-us/azure/architecture/icons/)
