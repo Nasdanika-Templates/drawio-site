@@ -473,4 +473,4 @@ You may make the diagrams executable. Details and demos are coming soon.
 
 ### Semantic mapping
 
-You can also "upgrade" to semantic mapping as explained in the [Beyond Diagrams](https://leanpub.com/beyond-diagrams) book and TODO story. 
+You can also "upgrade" to semantic mapping as explained in the [Visual Communication Continuum](https://medium.com/nasdanika/visual-communication-continuum-4946f44ba853) Medium story and [Beyond Diagrams](https://leanpub.com/beyond-diagrams) book. 
