@@ -457,6 +457,16 @@ To add a new documentation format:
 * Build a custom CLI with the above module as a dependency. See [Demo CLI](https://github.com/Nasdanika-Demos/cli) for an example.
 * Build a distribution, deploy to a web location, and update ``site.yml`` lines 33 and 35.
 
+## Interoperability with Confluence Drawio plugin
+If you use Confluence you may keep diagrams on Confluence with diagram-level descriptions and generate detailed element-level docummentation sites with Nasdanika CLI.
+To do so:
+
+* Create a personal access token
+* On the page which hosts your diagram go to attachments and copy the download link for your diagram file
+* Use ``curl -H "Authorization: Bearer <Your token>" <download URL> -o diagram.drawio`` command to download the diagram before generating a documentation site
+
+Note: I tested this approach with on-prem Confluence - it worked fine, but I couldn't make it work with the Cloud Confluence free plan. 
+
 ## Next steps
 
 This section outlines possible next steps once you have a site generated from a diagram or a set of diagrams.
