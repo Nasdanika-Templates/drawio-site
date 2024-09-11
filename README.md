@@ -458,7 +458,7 @@ To add a new documentation format:
 * Build a distribution, deploy to a web location, and update ``site.yml`` lines 33 and 35.
 
 ## Interoperability with Confluence Drawio plugin
-If you use Confluence you may keep diagrams on Confluence with diagram-level descriptions and generate detailed element-level docummentation sites with Nasdanika CLI.
+If you use Confluence you may keep diagrams on Confluence with diagram-level descriptions and generate detailed element-level documentation sites with Nasdanika CLI.
 To do so:
 
 * Create a personal access token
