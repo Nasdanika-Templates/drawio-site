@@ -137,6 +137,7 @@ Drawio has more than two thousand built-in icons. You can find more icons on the
 * [IconFinder](https://www.iconfinder.com/) - the world's largest marketplace for icons, ... 6 million icons at your fingertips including free icons. Multiple subscription levels.
 * [Icons8](https://icons8.com/) - more than a million icons in 47 styles. Free and subscription. Icons can be edited in-place before downloading.
 * [Iconduck](https://iconduck.com/) - more than 250 000 free open source icons
+* [Techicons](https://techicons.dev/) - SVG and PNG tech icons, sourced from https://github.com/devicons/devicon. 473 icons. 
 * Cloud providers:
     * [Azure](https://learn.microsoft.com/en-us/azure/architecture/icons/)
     * [AWS](https://aws.amazon.com/architecture/icons/)  
