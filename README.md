@@ -2,7 +2,6 @@
 
 This is a template repository for web sites generated from [Drawio](https://www.drawio.com/) diagrams with [GitHub Actions](https://docs.github.com/en/actions) and [Nasdanika CLI Drawio Command](https://docs.nasdanika.org/nsd-cli/nsd/drawio/index.html).
 
-
 ## Demos
 
 Below is a list of sites created from this template:
@@ -67,7 +66,9 @@ See [Action Load Specification](https://html-app.models.nasdanika.org/references
 
 You can add documentation to diagram elements, ``title`` and ``icon`` property, customize element ID, and link elements to pages or other elements, including pages and elements in other diagram files.
 
-Site pages are generated only for elements with documentation.
+You can also define action/label prototypes for diagram elements with ``prototype`` and ``proto-ref`` properties.
+
+Site pages are generated only for elements with documentation, prototypes, or both.
 
 Important: Pages are not generated for diagram elements without labels or ``title`` property! It may lead to broken links.
 
@@ -110,6 +111,34 @@ Element ID's are used to construct element page URL's.
 Element ID's are generated as long random strings. 
 They are editable - double-click on the ID at the top of the data dialog.
 So, if you'd like to have semantic URL's - customize the ID's.  
+
+### Prototypes
+
+With prototypes you can:
+
+* Generate complex site pages (actions) with children, navigation, sections, ...
+* Reuse action models. For example, generate an action model from one diagram and use it as a prototype for an element of another diagram.
+
+``prototype`` property value shall be a YAML prototype specification. For example:
+
+```yaml
+Action:
+    navigation:
+      - Action:
+          location: about-wendy.html
+          icon: fas fa-help
+          text: About
+          content:
+            Interpolator:
+              source:
+                exec.content.Text: |    
+                  This is an example of a page from an action prototype.
+```
+
+``proto-ref`` property value is a URI of the prototype action or label resolved relative to the element base URI.
+For example ``bob-prototype.yml#/``.
+
+If both properties are specified, ``prototype`` takes precedence over ``proto-ref``.
 
 ## Page and element links
 
@@ -474,14 +503,34 @@ This section outlines possible next steps once you have a site generated from a 
 
 ### Executable diagrams
 
-You may make the diagrams executable. Details and demos are coming soon.
+You may make the diagrams executable. 
 
-#### Scripted processors
+Stories:
 
-#### Dynamic proxy
+* [General purpose executable graphs and diagrams](https://medium.com/nasdanika/general-purpose-executable-graphs-and-diagrams-8663deae5248)
+* [Concurrent Executable Diagrams](https://medium.com/nasdanika/concurrent-executable-diagrams-0cd3bac61e2b)
+* [Executable (computational) graphs & diagrams](https://medium.com/nasdanika/executable-computational-graphs-diagrams-1eeffc80976d)
 
-#### HTTP Routes
+Demos:
+
+* [Concurrent Executable Diagrams](https://nasdanika-demos.github.io/concurrent-executable-diagrams/)
+* [Executable Diagram Dynamic Proxy](https://github.com/Nasdanika-Demos/executable-diagram-dynamic-proxy)
+* [Compute Graph](https://github.com/Nasdanika-Demos/compute-graph)
 
 ### Semantic mapping
 
-You can also "upgrade" to semantic mapping as explained in the [Visual Communication Continuum](https://medium.com/nasdanika/visual-communication-continuum-4946f44ba853) Medium story and [Beyond Diagrams](https://leanpub.com/beyond-diagrams) book. 
+[Semantic mapping](https://docs.nasdanika.org/core/mapping/index.html) allows to create Ecore models from data sources such as Drawio diagrams. 
+
+The goal of Drawio site generation explained above is to provide a quick simple way to start with generating web sites from Drawio diagrams. 
+It is a form of a lightweight semantic mapping which uses just a few properties.
+
+You can use the approach explained here with executable diagrams and semantic mapping. 
+You can also "upgrade" to semantic mapping if you need more features. For example, [geometric sorting](https://docs.nasdanika.org/core/mapping/index.html#geometric).  
+
+Resources:
+
+* Medium stories:
+    * [Semantic Mapping](https://medium.com/nasdanika/semantic-mapping-3ccbef5d6c70)
+    * [Visual Communication Continuum](https://medium.com/nasdanika/visual-communication-continuum-4946f44ba853)
+* [Demo](https://nasdanika-demos.github.io/semantic-mapping/)
+* [Nasdanika site](https://docs.nasdanika.org/index.html) is generated from a Drawio diagram mapped to the [HTML application](https://html-app.models.nasdanika.org/index.html) model.
