@@ -2,13 +2,15 @@
 
 This is a template repository for web sites generated from [Drawio](https://www.drawio.com/) diagrams with [GitHub Actions](https://docs.github.com/en/actions) and [Nasdanika CLI Drawio Command](https://docs.nasdanika.org/nsd-cli/nsd/drawio/index.html).
 
+[TOC levels=6]
+
 ## Demos
 
 Below is a list of sites created from this template:
 
 * [Bob the builder](https://nasdanika-demos.github.io/bob-the-builder/), this [video](https://www.youtube.com/watch?v=OtifPFetg9o) shows how this demo was created.
 * [Internet Banking System](https://nasdanika-demos.github.io/internet-banking-system/index.html) - a sample C4 Model documented using this template/approach.
-* [Declarative Command Pipelines](https://nasdanika-demos.github.io/declarative-command-pipelines/) - illustrations for a Medium story. This demo show how to create a site from a diagram with multiple top-level pages.
+* [Declarative Command Pipelines](https://nasdanika-demos.github.io/declarative-command-pipelines/) - illustrations for a Medium story. This demo shows how to create a site from a diagram with multiple top-level pages.
 * More demos on [Nasdanika Demos](https://github.com/orgs/Nasdanika-Demos/repositories)
 
 ## Steps
