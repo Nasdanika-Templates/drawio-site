@@ -158,9 +158,49 @@ The link chain is traversed and the diagram element on the generated site is lin
 ## Multiple top-level pages
 
 A top-level diagram page is a page that is not linked from any diagram element. 
-If there is more than one top-level page, then you may want to add a principal action to the ``root-action.yml`` and link pages to the principal action by removing ``--add-to-root`` option from the command line.
+If there is more than one top-level page, then you may want to add a principal action to the ``root-action.yml`` and link pages to the principal action by removing ``--add-to-root`` option from the command line in ``site.xml``.
 
-See [Declarative Command Pipelines](https://nasdanika-demos.github.io/declarative-command-pipelines/) for an example.
+Examples:
+
+* [Beyond Diagrams Illustrations](https://nasdanika-demos.github.io/beyond-diagrams/index.html)
+* [Declarative Command Pipelines](https://nasdanika-demos.github.io/declarative-command-pipelines/)
+
+### site.yml
+
+Change the command at line 42 to:
+
+```yml
+./nsd drawio ../diagram.drawio html-app -r ../root-action.yml site -r=-1 -F ../page-template.yml ../docs
+```
+
+### root-action.yml
+
+Add a child action at the first position. 
+Page actions will be added to this action as children. 
+Example:
+
+```yml
+Action:
+    icon: https://docs.nasdanika.org/images/nasdanika-logo.png
+    text: Nasdanika Demos
+    location: https://github.com/Nasdanika-Demos
+    children:
+      - Action:
+          location: ${base-uri}index.html
+          text: Beyond Diagrams Illustrations
+          content:
+            Interpolator:
+              source:
+                Markdown:
+                  style: true
+                  source:
+                    exec.content.Resource: README.md
+    navigation:
+      - Action:
+          text: Source
+          icon: fab fa-github
+          location: https://github.com/Nasdanika-Demos/beyond-diagrams
+```          
 
 ## Icons
 
@@ -476,46 +516,6 @@ It is also possible to load a diagram definition from a resource resolved relati
 Missing resources are reported on pages using danger alert blocks.
 
 If you want to prevent deployment of a site with page errors, remove the option or set it to the expected number of errors - there might be "known errors" which you are OK to live with.
-
-## Multiple top-level pages
-
-If your diagram has multiple top-level pages, i.e. pages not linked from diagram elements, then you'd need to modify ``site.yml`` and ``root-action.yml`` as explained below. 
-[Beyond Diagrams Illustrations](https://nasdanika-demos.github.io/beyond-diagrams/index.html) is an example of a site generated from a diagram file with multiple top-level pages.
-
-### site.yml
-
-Change the command at line 42 to:
-
-```yml
-./nsd drawio ../diagram.drawio html-app -r ../root-action.yml site -r=-1 -F ../page-template.yml ../docs
-```
-
-### root-action.yml
-
-Add a child action at the first position. Page actions will be added to this action as children. Example:
-
-```yml
-Action:
-    icon: https://docs.nasdanika.org/images/nasdanika-logo.png
-    text: Nasdanika Demos
-    location: https://github.com/Nasdanika-Demos
-    children:
-      - Action:
-          location: ${base-uri}index.html
-          text: Beyond Diagrams Illustrations
-          content:
-            Interpolator:
-              source:
-                Markdown:
-                  style: true
-                  source:
-                    exec.content.Resource: README.md
-    navigation:
-      - Action:
-          text: Source
-          icon: fab fa-github
-          location: https://github.com/Nasdanika-Demos/beyond-diagrams
-```          
 
 ## Upgrading NSD CLI version
 
