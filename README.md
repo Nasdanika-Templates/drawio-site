@@ -39,7 +39,9 @@ For example:
 You may rename ``diagram.drawio`` to something more meaningful, e.g.``my-system.drawio``. 
 Or you may use a pre-existing drawio diagram and delete ``diagram.drawio``. 
 You can also use an external diagram and reference it by URL.
-If you do rename/replace the diagram, open ``.github/workflows/site.yml`` and update line 40 with a new diagram file name.
+If you do rename/replace the diagram, open ``.github/workflows/site.yml`` and update line 42 with a new diagram file name.
+
+You can edit the diagram directly on GitHub using [Draw.io online editor](https://app.diagrams.net/)
 
 ## Page template
 
@@ -474,6 +476,46 @@ It is also possible to load a diagram definition from a resource resolved relati
 Missing resources are reported on pages using danger alert blocks.
 
 If you want to prevent deployment of a site with page errors, remove the option or set it to the expected number of errors - there might be "known errors" which you are OK to live with.
+
+## Multiple top-level pages
+
+If your diagram has multiple top-level pages, i.e. pages not linked from diagram elements, then you'd need to modify ``site.yml`` and ``root-action.yml`` as explained below. 
+[Beyond Diagrams Illustrations](https://nasdanika-demos.github.io/beyond-diagrams/index.html) is an example of a site generated from a diagram file with multiple top-level pages.
+
+### site.yml
+
+Change the command at line 42 to:
+
+```yml
+./nsd drawio ../diagram.drawio html-app -r ../root-action.yml site -r=-1 -F ../page-template.yml ../docs
+```
+
+### root-action.yml
+
+Add a child action at the first position. Page actions will be added to this action as children. Example:
+
+```yml
+Action:
+    icon: https://docs.nasdanika.org/images/nasdanika-logo.png
+    text: Nasdanika Demos
+    location: https://github.com/Nasdanika-Demos
+    children:
+      - Action:
+          location: ${base-uri}index.html
+          text: Beyond Diagrams Illustrations
+          content:
+            Interpolator:
+              source:
+                Markdown:
+                  style: true
+                  source:
+                    exec.content.Resource: README.md
+    navigation:
+      - Action:
+          text: Source
+          icon: fab fa-github
+          location: https://github.com/Nasdanika-Demos/beyond-diagrams
+```          
 
 ## Upgrading NSD CLI version
 
