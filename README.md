@@ -144,6 +144,35 @@ For example ``bob-prototype.yml#/``.
 
 If both properties are specified, ``prototype`` takes precedence over ``proto-ref``.
 
+If a diagram element without a prototype definition is linked to a page and the page root has a prototype definition, then that definition is used. 
+
+Prototype can also be used to modify top level page location from the default ``index.html`` - it is needed if the root action has a link:
+
+```yaml
+Action:
+  location: ${base-uri}index.html
+```
+
+### Role
+
+You can use ``role`` property to specify where the diagram element page appears in the [page structure](https://html-app.models.nasdanika.org/index.html#page-structure).
+Valid values:
+
+* ``anonymous`` - a page is generated, but not linked from generated navigation elements - it has to be explicitly referenced. This is the default for connections. Diagram links are generated for anonymous elements.
+* ``child`` - a page link is generated in the navigation panel under the parent element. This is the default for nodes.
+* ``navigation`` - a page link is generated in the parent page navigation bar.
+* ``section`` - diagram element is generated as a section of its parent. Diagram link is not generated.
+
+#### Parent
+
+You can use ``parent`` property with values ``source`` or ``target`` to generate sites from mind maps where page parent/child relationship is defined by connections instead of containment and page links.
+
+#### Sort key
+
+By default pages are sorted alphabetically by title in the navigation panel. 
+You can use ``sort-key`` property to customize sorting order - pages are sorted alphabetically by the key value and then alphabetically by title within the same key.
+Pages without a sort key are considered greater than pages with a key.
+
 ## Page and element links
 
 You may link elements to pages and other element using the [extended link syntax](https://docs.nasdanika.org/core/drawio/index.html#page-and-element-links).

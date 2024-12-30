@@ -1,7 +1,7 @@
 Action:
     icon: https://docs.nasdanika.org/images/nasdanika-logo.png
     text: Nasdanika Templates
-    # location: https://github.com/Nasdanika-Demos - breaks the site in 2024.8.0, will be fixed in subsequent releases
+    location: https://github.com/Nasdanika-Templates
     children:
       - Action:
           location: ${base-uri}search.html
