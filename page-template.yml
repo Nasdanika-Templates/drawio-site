@@ -19,19 +19,7 @@ bootstrap.Page:
     - https://cdn.jsdelivr.net/npm/bootstrap-vue@2.23.0/dist/bootstrap-vue.min.js
     - https://cdn.jsdelivr.net/gh/Nasdanika-Models/html-app@master/gen/web-resources/js/components/table.js
     - https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js
-    - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/groovy.min.js
-  head:
-    # Google analytics
-    content.Text: |+2    
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9BRJVLK8CC"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-      
-        gtag('config', 'G-9BRJVLK8CC');
-      </script>    
+    - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/groovy.min.js    
   body:
     app.Page:
       fluid: true
