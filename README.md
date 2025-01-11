@@ -88,13 +88,18 @@ Out of the box there are 3 formats supported:
 * ``html``
 * ``text``
 
-You can add support for more formats, e.g. [Asciidoc](https://docs.asciidoctor.org/asciidoc/latest/) using [AsciidoctorJ](https://github.com/asciidoctor/asciidoctorj) - see "Adding support for documentation format" below. 
+You can add support for more formats, e.g. [Asciidoc](https://docs.asciidoctor.org/asciidoc/latest/) using [AsciidoctorJ](https://github.com/asciidoctor/asciidoctorj)
+or create a template engine documentation format - [Apache FreeMarker](https://freemarker.apache.org/) or [Mustache](https://github.com/spullara/mustache.java).
+See "Adding support for documentation format" below. 
 
 You may reference an external documentation resources with ``doc-ref`` property - this how it is done for the diagram root (click on the diagram canvas and then on "Edit Data" button in the right panel). 
 Documentation reference is a URL resolved relative to the diagram file location.
 
 If you use ``doc-ref`` property, the documentation format is inferred from the extension. 
 You may override the inferred value using ``doc-format`` property.
+
+You can use property interpolation in documentation - ``${<property name>}`` text would be replaced with the property value. 
+This feature can be used in conjunction with ``-p`` and ``-P`` options of the [drawio](https://docs.nasdanika.org/nsd-cli/nsd/drawio/index.html) command.
 
 ### Title
 
@@ -548,7 +553,7 @@ If you want to prevent deployment of a site with page errors, remove the option 
 
 ## Upgrading NSD CLI version
 
-When a new version of Nasdanika CLI is released you may update lines 33 and 35 in ``site.yml`` to point to the new distribution.
+When a new version of Nasdanika CLI is released you may update line 33 in ``site.yml`` to point to the new distribution.
 
 ## Adding support for a new documentation format
 
@@ -558,7 +563,7 @@ To add a new documentation format:
 * Create a documentation [capability](https://docs.nasdanika.org/core/capability/index.html) factory class, see [MarkdownDocumentationFactory](https://github.com/Nasdanika/core/blob/master/exec/src/main/java/org/nasdanika/exec/util/MarkdownDocumentationFactory.java)
 * Register it in ``module-info.java`` - [example](https://github.com/Nasdanika/core/blob/master/exec/src/main/java/module-info.java)
 * Build a custom CLI with the above module as a dependency. See [Demo CLI](https://github.com/Nasdanika-Demos/cli) for an example.
-* Build a distribution, deploy to a web location, and update ``site.yml`` lines 33 and 35.
+* Build a distribution, deploy to a web location, and update ``site.yml`` line 33.
 
 ## Interoperability with Confluence Drawio plugin
 If you use Confluence you may keep diagrams on Confluence with diagram-level descriptions and generate detailed element-level documentation sites with Nasdanika CLI.
@@ -569,6 +574,77 @@ To do so:
 * Use ``curl -H "Authorization: Bearer <Your token>" <download URL> -o diagram.drawio`` command to download the diagram before generating a documentation site
 
 Note: I tested this approach with on-prem Confluence - it worked fine, but I couldn't make it work with the Cloud Confluence free plan. 
+
+## Changing file extension
+
+By default pages are generated with ``.html`` extension. 
+You may change the extension using ``-x <index name>`` option of the [html-app](https://docs.nasdanika.org/nsd-cli/nsd/drawio/html-app/index.html) command.
+For example, you may change the extension to ``php`` to add authentication and other dynamic behavior with ``-x index.php`` option. 
+[Internet Banking System PHP demo](https://github.com/Nasdanika-Demos/internet-banking-system-php) shows how do so.
+If you use generated search, also add ``-x <extension>`` option to the [site](https://docs.nasdanika.org/nsd-cli/nsd/drawio/html-app/site/index.html) command so the generated pages are included into the search index, e.g. ``-x php``.
+
+To add contents before the ``<html>`` opening tag use ``prolog`` configuration key in page template. E.g.:
+
+```yml
+  prolog:  
+    content.Text: |
+      <?php
+        ... php code here ...
+      ?>
+```
+
+You can also use ``epilog`` to add content after the ``</html>`` closing tag.
+
+If you use search and glossary, change their extensions too.
+
+This technique can be used to publish generated sites to SharePoint - change the extension to ``aspx``.
+
+## Representation elements filtering
+
+Representation filtering allows to modify diagram elements during site generation. 
+For example, if the [Mainframe Banking System](https://nasdanika-demos.github.io/internet-banking-system/mainframe-banking-system/index.html) is down on a planned maintenance in a DEV environment then during generation of a site for the DEV environment its opacity can be modified to visually show that it is unavailable. 
+In the same vein, if the E-Mail system is unavailable due to an outage it may be displayed with a red border. 
+Or if it is overloaded and very slow the border may be orange.
+
+For systems under development diagram elements may be filtered to display their status. 
+For example, gray border for Planned, blue for In Progress, green for Done, Red for Blocked, and orange for At Risk.
+
+
+Representation filters can be passed as invocable URIs to the ``html-app`` command with ``-F <URI>`` option where ``<URI>`` is an [invocable URI](https://docs.nasdanika.org/core/capability/index.html#loading-invocables-from-uris) returning and instance of ``org.nasdanika.models.app.graph.drawio.RepresentationElementFilter``. 
+
+[Bob The Builder demo](https://github.com/Nasdanika-Demos/bob-the-builder) features a Groovy representation element filter:
+
+```groovy
+import org.nasdanika.models.app.graph.drawio.RepresentationElementFilter;
+import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.drawio.Element;
+import org.nasdanika.drawio.ModelElement;
+import org.nasdanika.graph.processor.ProcessorInfo;
+import org.nasdanika.models.app.graph.WidgetFactory;
+import org.nasdanika.capability.CapabilityFactory.Loader
+
+// Script arguments for reference
+Loader loader = args[0];
+ProgressMonitor loaderProgressMonitor = args[1];
+Object data = args[2]; // From fragment
+
+new RepresentationElementFilter() {
+
+    @Override
+    void filterRepresentationElement(
+            ModelElement sourceElement, 
+            ModelElement representationElement,
+            Map<Element, ProcessorInfo<WidgetFactory>> registry, ProgressMonitor progressMonitor) {
+
+        if ("Bob".equals(representationElement.getLabel())) {
+            representationElement.style("imageBorder", "default");
+        }
+    }
+    
+}
+```
+
+The filter creates a border for the Bob element.
 
 ## Next steps
 
