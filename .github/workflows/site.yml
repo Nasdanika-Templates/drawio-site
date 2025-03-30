@@ -30,7 +30,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Download Nasdanika CLI
-        run: wget https://github.com/Nasdanika/cli/releases/download/maven-2025.2.0/nsd-cli.zip
+        run: wget https://github.com/Nasdanika/cli/releases/download/maven-2025.3.0/nsd-cli.zip
       - name: Unzip Nasdanika CLI
         run: unzip nsd-cli.zip
       - name: Setup Graphviz
