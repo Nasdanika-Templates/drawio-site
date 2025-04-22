@@ -157,6 +157,9 @@ Prototype can also be used to modify top level page location from the default ``
 Action:
   location: ${base-uri}index.html
 ```
+### Parent
+
+You can use ``parent`` property with values ``source`` or ``target`` to generate sites from mind maps where page parent/child relationship is defined by connections instead of containment and page links.
 
 ### Role
 
@@ -168,11 +171,7 @@ Valid values:
 * ``navigation`` - a page link is generated in the parent page navigation bar.
 * ``section`` - diagram element is generated as a section of its parent. Diagram link is not generated.
 
-#### Parent
-
-You can use ``parent`` property with values ``source`` or ``target`` to generate sites from mind maps where page parent/child relationship is defined by connections instead of containment and page links.
-
-#### Sort key
+### Sort key
 
 By default pages are sorted alphabetically by title in the navigation panel. 
 You can use ``sort-key`` property to customize sorting order - pages are sorted alphabetically by the key value and then alphabetically by title within the same key.
